@@ -15,22 +15,41 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //FileReader
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        
+        //String text = br.readLine();
+            
+        //GetParameters
+        String tInput = br.readLine();
+        String cInput = br.readLine();
+        
+        Note nData = new Note(tInput, cInput);
+        request.setAttribute("nData", nData);
+        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         
+        //FileReader
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         BufferedReader br = new BufferedReader(new FileReader(new File(path)));
         
-        String tInput = request.getParameter("title");
-        String cInput = request.getParameter("content");
+        //String text = br.readLine();
+            
+        //GetParameters
+        String tInput = br.readLine();
+        String cInput = br.readLine();
         
         Note nData = new Note(tInput, cInput);
         request.setAttribute("nData", nData);
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
     }
 
     @Override
