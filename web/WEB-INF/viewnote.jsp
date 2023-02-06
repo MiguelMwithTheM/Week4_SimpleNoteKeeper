@@ -22,11 +22,12 @@
         <h2>View Note</h2>
 
         <%--NoteTitle--%>        
-        <h3>Title: </h3> <p>UpperBanan</p>
+        <h3>Title: </h3>
+        <p>${nData.title}</p>
         
         <%--NoteContent--%> 
         <h3>Contents: </h3>
-        <p><span style='font-weight: bold'>LowerBanan</span> asdfasdf</p>
+        <p>${nData.content}</p>
         
         <%--Link--%> 
         <a href="note?edit">Edit</a>

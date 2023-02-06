@@ -21,15 +21,21 @@
         <%--CurrentState--%>
         <h2>Edit Note</h2>
 
-        <%--NoteTitle--%>        
-        <h3>Title: </h3> <p>UpperBanan</p>
+        <%--NoteTitle--%>
+        <form name="nForm" method="post" action="note">
         
-        <%--NoteContent--%> 
-        <h3>Contents: </h3>
-        <p><span style='font-weight: bold'>LowerBanan</span> asdfasdf</p>
+            <%--NoteTitle--%>        
+            <h3>Title: </h3>
+            <input type="text" id="title" name="title" value="${title}">
+
+            <%--NoteContent--%> 
+            <h3>Contents: </h3>
+            <input type="text" id="content" name="content" value="${content}">
+
+            <%--Button--%> 
+            <input type='text' value='Save'>
         
-        <%--Button--%> 
-        <input type='submit' value='Save'>
+        </form>
         
     </body>
     
