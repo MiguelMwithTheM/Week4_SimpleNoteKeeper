@@ -7,11 +7,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Edit</title>
     </head>
+    
     <body>
-        <h1>Hello World!</h1>
+        
+        <%--Title--%>
+        <h1>Sample Note Keeper</h1>
+        
+        <%--CurrentState--%>
+        <h2>Edit Note</h2>
+
+        <%--NoteTitle--%>        
+        <h3>Title: </h3> <p>UpperBanan</p>
+        
+        <%--NoteContent--%> 
+        <h3>Contents: </h3>
+        <p><span style='font-weight: bold'>LowerBanan</span> asdfasdf</p>
+        
+        <%--Button--%> 
+        <input type='submit' value='Save'>
+        
     </body>
+    
 </html>
