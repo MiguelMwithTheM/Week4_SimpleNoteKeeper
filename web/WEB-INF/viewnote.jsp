@@ -30,7 +30,7 @@
         <p>${nData.content}</p>
         
         <%--Link--%> 
-        <a href="note?edit">Edit</a>
+        <a href="noteservlet?edit" name='edit'>Edit</a>
         
     </body>
     

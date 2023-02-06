@@ -1,9 +1,6 @@
 package servlet;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,34 +19,46 @@ public class NoteServlet extends HttpServlet {
         
         //String text = br.readLine();
             
-        //GetParameters
-        String tInput = br.readLine();
-        String cInput = br.readLine();
+        //while (text != null){
+            //GetParameters
+            String tInput = br.readLine();
+            String cInput = br.readLine();
+            
+            Note nData = new Note(tInput, cInput);
+            request.setAttribute("nData", nData);
+        //}
         
-        Note nData = new Note(tInput, cInput);
-        request.setAttribute("nData", nData);
+        //Note nData = new Note(tInput, cInput);
+        //request.setAttribute("nData", nData);
         
-        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
+        String edit = request.getParameter("edit");
+        if(edit == null){
+        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
+                .forward(request, response); 
+        }
+        else{
+            getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp")
+                .forward(request, response); 
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //FileReader
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
-        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
         
-        //String text = br.readLine();
-            
-        //GetParameters
-        String tInput = br.readLine();
-        String cInput = br.readLine();
-        
+        String tInput = request.getParameter("title");
+        String cInput = request.getParameter("content");
         Note nData = new Note(tInput, cInput);
-        request.setAttribute("nData", nData);
         
-        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
+        //GetParameters
+        pw.println(nData.getTitle());
+        pw.println(nData.getContent());
+                
+        request.setAttribute("nData", nData);
+                
     }
 
     @Override
